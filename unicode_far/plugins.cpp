@@ -1378,8 +1378,45 @@ int PluginManager::ProcessEvent(
     void *Param
 )
 {
-	PluginHandle *ph = (PluginHandle*)hPlugin;
-	return ph->pPlugin->ProcessPanelEvent(ph->hPlugin, Event, Param);
+	if (!hPlugin)
+	{
+		// hPlugin==NULL для обработки событий на всех панелях
+		// (передаётся всем плагинам с PF_ALLPANELEVENTS)
+
+		for (size_t i=0; i<PluginsCount; i++)
+		{
+			UINT64 PluginFlags=0;
+	
+			if (PluginsData[i]->CheckWorkFlags(PIWF_CACHED))
+			{
+				unsigned __int64 id = PlCacheCfg->GetCacheID(PluginsData[i]->GetCacheName());
+				PluginFlags = PlCacheCfg->GetFlags(id);
+			}
+			else
+			{
+				PluginInfo Info = {sizeof(Info)};
+	
+				if (PluginsData[i]->GetPluginInfo(&Info))
+					PluginFlags = Info.Flags;
+				else
+					continue;
+			}
+
+			if (PluginFlags & PF_ALLPANELEVENTS)
+			{
+				Plugin *pPlugin = PluginsData[i];
+				if (pPlugin->Load() && pPlugin->ProcessPanelEvent(NULL, Event, Param))
+					return TRUE;
+			}
+		}
+	
+		return FALSE;
+	}
+	else
+	{
+		PluginHandle *ph = (PluginHandle*)hPlugin;
+		return ph->pPlugin->ProcessPanelEvent(ph->hPlugin, Event, Param);
+	}
 }
 
 

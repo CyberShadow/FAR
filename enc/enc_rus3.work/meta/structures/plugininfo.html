@@ -52,6 +52,10 @@ struct PluginInfo
     <tr class="cont"><td class="cont" width="40%"><a name="PF_FULLCMDLINE">PF_FULLCMDLINE</a></td>
     <td class="cont" width="60%">«аставл€ет Far Manager передавать плагину всю командную строку вместе с префиксом <i>CommandPrefix</i>.
     ќб€зательно использовать этот флаг, если плагин умеет обрабатывать несколько префиксов <i>CommandPrefix</i>.</td></tr>
+    <tr class="cont"><td class="cont" width="40%"><a name="PF_ALLPANELEVENTS">PF_ALLPANELEVENTS</a></td>
+    <td class="cont" width="60%">«аставл€ет Far Manager передавать плагину все панельные событи€, невазисимо если панель пренадлежит какому-либо плагину.
+    “акие глобальные событи€ передаютс€ через <a href="../exported_functions/processpaneleventw.html">ProcessPanelEventW</a> с полем hPanel равном NULL.
+    √лобальные событи€ передаютс€ перед обычными, позвол€€ плагинам перехватывать панельные событи€ вернув TRUE.</td></tr>
     </table>
     </div>
   <div class=dfn>DiskMenu</div>

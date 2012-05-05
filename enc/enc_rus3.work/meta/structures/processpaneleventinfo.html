@@ -34,7 +34,9 @@ struct ProcessPanelEventInfo
   <div class=dfn>StructSize</div>
     <div class=dfndescr>Это поле содержит размер структуры <dfn>ProcessPanelEventInfo</dfn>.</div>
   <div class=dfn>hPanel</div>
-    <div class=dfndescr>Описатель панели, возвращаемый функцией <a href="../exported_functions/openw.html">OpenW</a>.</div>
+    <div class=dfndescr>Описатель панели, возвращаемый функцией <a href="../exported_functions/openw.html">OpenW</a>.
+    Может быть NULL, если в PluginInfo.Flags был указан <a href="plugininfo.html#PF_ALLPANELEVENTS">PF_ALLPANELEVENTS</a>.
+    </div>
   <div class=dfn>Event</div>
     <div class=dfndescr>Тип события. Одно из следующих значений (перечисление <a name="FAR_EVENTS">FAR_EVENTS</a>):
     <table class="cont">

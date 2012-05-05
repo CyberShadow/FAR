@@ -1251,6 +1251,10 @@ HANDLE FileList::GetPluginHandle()
 
 int FileList::ProcessPluginEvent(int Event,void *Param)
 {
+	// общие плагины имеют приоритет для перехвата событий
+	if (Panel::ProcessPluginEvent(Event, Param))
+		return TRUE;
+
 	if (PanelMode==PLUGIN_PANEL)
 		return(CtrlObject->Plugins->ProcessEvent(hPlugin,Event,Param));
 

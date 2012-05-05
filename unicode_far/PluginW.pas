@@ -2734,12 +2734,13 @@ type
 { PLUGIN_FLAGS }
 
 const
-  PF_PRELOAD       = $0001;
-  PF_DISABLEPANELS = $0002;
-  PF_EDITOR        = $0004;
-  PF_VIEWER        = $0008;
-  PF_FULLCMDLINE   = $0010;
-  PF_DIALOG        = $0020;
+  PF_PRELOAD        = $0001;
+  PF_DISABLEPANELS  = $0002;
+  PF_EDITOR         = $0004;
+  PF_VIEWER         = $0008;
+  PF_FULLCMDLINE    = $0010;
+  PF_DIALOG         = $0020;
+  PF_ALLPANELEVENTS = $0040;
 
 (*
 struct PluginInfo

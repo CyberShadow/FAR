@@ -2786,3 +2786,8 @@ bool Panel::ExecShortcutFolder(string& strShortcutFolder,const GUID& PluginGuid,
 	SrcPanel->Redraw();
 	return true;
 }
+
+int Panel::ProcessPluginEvent(int Event,void *Param)
+{
+	return(CtrlObject->Plugins->ProcessEvent(NULL,Event,Param));
+}

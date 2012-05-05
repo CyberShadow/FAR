@@ -283,7 +283,7 @@ class Panel:public ScreenObject
 		virtual void GetOpenPanelInfo(struct OpenPanelInfo *Info) {}
 		virtual void SetPluginMode(HANDLE hPlugin,const wchar_t *PluginFile,bool SendOnFocus=false) {}
 		virtual void SetPluginModified() {}
-		virtual int ProcessPluginEvent(int Event,void *Param) {return FALSE;}
+		virtual int ProcessPluginEvent(int Event,void *Param);
 		virtual HANDLE GetPluginHandle() {return nullptr;}
 		virtual void SetTitle();
 		virtual string &GetTitle(string &Title,int SubLen=-1,int TruncSize=0);
